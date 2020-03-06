@@ -9,7 +9,7 @@ package:
 
 source:
   git_url: https://github.com/nhm-usgs/bmi-prms6-surface
-  git_rev: 1d1ad47fbf5e4752339521666100639043bbe7b5
+  git_rev: 617ea1e41001cbdcb674102076f88b05d3f38d66
 
 build:
   string: {{ release }}.{{ build_number }}
