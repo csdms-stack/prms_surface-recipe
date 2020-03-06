@@ -34,7 +34,7 @@ requirements:
 
 test:
   commands:
-    - test -x $PREFIX/lib/libbmiprmssurface$SHLIB_EXT
+    - test -s $PREFIX/lib/libbmiprmssurface$SHLIB_EXT
     - test -s $PREFIX/include/bmif_2_0.mod
     - test -s $PREFIX/include/bmiprmssurface.mod
 
