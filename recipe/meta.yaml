@@ -12,7 +12,7 @@ source:
   git_rev: 5e3e455be9cbd8ef15d6c57b065c94478acf8401
 
 build:
-  number: {{ release }}_{{ build_number }}
+  string: {{ release }}_{{ build_number }}
 
 requirements:
   build:
