@@ -1,6 +1,6 @@
 {% set name = "prms_surface" %}
 {% set version = "0.3" %}
-{% set build_number = "0" %}
+{% set build_number = "1" %}
 {% set development = true %}
 
 package:
@@ -10,7 +10,7 @@ package:
 source:
   git_url: https://github.com/nhm-usgs/bmi-prms6-surface
 {%- if development %}
-  git_rev: 96c8d09ffc6bc915f971801d535106eb5117efb5
+  git_rev: 3c6fdaf2ad1ba34a91638d74329123c319ed5395
 {%- else %}
   git_rev: v{{ version }}
 {%- endif %}
