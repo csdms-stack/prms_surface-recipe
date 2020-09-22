@@ -8,7 +8,7 @@ env:
   global:
     - CONDA_PREFIX=$HOME/conda
     - MINICONDA_URL_BASE="https://repo.anaconda.com/miniconda/Miniconda3-latest"
-    - TRAVIS_PYTHON_VERSION="3.*"
+    - PYTHON="3"
     - secure: "2qOfKEuO0icsmELQ3CGbecDfa5NUdsPYRdxG3FtPvPaY8Tir1c/B2Zv0KCO4vD7/b8Qss144lJdQDnpLEBXrXiaJxBgUEe27aFBsp8VFpr+0bA/DS2JrqOemOwWSGcTWL7M1xOyRZK4BpVxlLjkK1CNfzUfpt0gMmTSGuIzhW0l/1jaPVGs1M1I70ec+RNGnovi7mI4PPvq5LDSaAU/V1mMkciQJh3g5DKAHZe3E/PtiOubv6qrnvkwzhbbzPybgayaoyxuzEeRO0MxHzWor68YgBD1+ui9D3u1GbEiBJX+vF8CEdrN3sjxTYgiahxiWCkR4ZYWSCmWhex4XDm6GYJMuh8Amauz+xpOFk8WsfbTyOHiPq7b4SqvHBiN5W0LX8oETdTUqiRJN3eRyNkfmk3glCmoXgD8EZBBqBGnsXIeX0Z5B7yMs4BIcqDSbkMflrxKgVMDVI2jN3+oTFwlVT73ZT5pecclWd1gbXqQRV7pb6D1FECi2VA+5FeJNvxPtUxiY1E4i2+Mj3GwzbEZ2l0jPy3ud49wL/sNHPYZ8iXFKqaJko7G5LES7PWOG2QqXsjOTBjdGQFzqeZLPqj7FhCiHEpDzooS0Y7YVH8aZqGsZl3fFKJx6jEyrylBXoQniNWSu/4oNunN9ydPwCWf/wTwRvLLD7P0TS5zuwRPspuk="
 
 before_install:
@@ -31,11 +31,13 @@ install:
   - export PATH="$CONDA_PREFIX/bin:$PATH"
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
-  - conda install python=$TRAVIS_PYTHON_VERSION -c conda-forge
-  - conda install -q conda-build anaconda-client -c conda-forge
+  - conda config --add channels csdms-stack
+  - conda config --add channels conda-forge
+  - conda install python=$TRAVIS_PYTHON_VERSION conda-build anaconda-client
+  - conda info -a
 
 script:
-  - conda build ./recipe -c conda-forge -c csdms-stack --old-build-string
+  - conda build ./recipe
 
 after_success:
   - curl https://raw.githubusercontent.com/csdms/ci-tools/master/anaconda_upload.py > $HOME/anaconda_upload.py
