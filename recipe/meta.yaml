@@ -1,6 +1,6 @@
 {% set name = "prms_surface" %}
 {% set version = "0.3" %}
-{% set build_number = "3" %}
+{% set build_number = "4" %}
 {% set development = true %}
 
 package:
